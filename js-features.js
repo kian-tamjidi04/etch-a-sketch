@@ -20,23 +20,7 @@ function createGrid(n) {
 }
 
 createGrid(16);
-
-const boxes = document.querySelectorAll(".box");
-
-// Changes the colour of a box if the mouse hovers over it
-boxes.forEach(box => {
-    box.addEventListener("mouseover", () => {
-        // Colour depends on which button was pressed by the user
-        if (colour == "gray") {
-            box.style.backgroundColor = "gray";
-        } else {
-            let red = pickRandomNumber();
-            let green = pickRandomNumber();
-            let blue = pickRandomNumber();
-            box.style.backgroundColor = `rgb(${red}, ${blue}, ${green})`
-        }
-    });
-});
+boxColouring();
 
 const sizeBtn = document.querySelector(".sizeBtn");
 sizeBtn.addEventListener("click", () => {
@@ -58,20 +42,7 @@ sizeBtn.addEventListener("click", () => {
     // Creates new grid
     createGrid(size);
 
-    const boxes = document.querySelectorAll(".box");
-    boxes.forEach(box => {
-        box.addEventListener("mouseover", () => {
-            // Colour depends on which button was pressed by the user
-            if (colour == "gray") {
-                box.style.backgroundColor = "gray";
-            } else {
-                let red = pickRandomNumber();
-                let green = pickRandomNumber();
-                let blue = pickRandomNumber();
-                box.style.backgroundColor = `rgb(${red}, ${blue}, ${green})`;
-            }
-        });
-    });
+    boxColouring();
 });
 
 let colour = "gray";
@@ -88,4 +59,21 @@ greyButton.addEventListener("click", () => {
 
 function pickRandomNumber() {
     return Math.floor(Math.random() * 256);
+}
+
+function boxColouring() {
+    const boxes = document.querySelectorAll(".box");
+    boxes.forEach(box => {
+        box.addEventListener("mouseover", () => {
+            // Colour depends on which button was pressed by the user
+            if (colour == "gray") {
+                box.style.backgroundColor = "gray";
+            } else {
+                let red = pickRandomNumber();
+                let green = pickRandomNumber();
+                let blue = pickRandomNumber();
+                box.style.backgroundColor = `rgb(${red}, ${blue}, ${green})`;
+            }
+        });
+    });
 }
