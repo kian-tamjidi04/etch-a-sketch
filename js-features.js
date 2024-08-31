@@ -26,7 +26,14 @@ const boxes = document.querySelectorAll(".box");
 // Changes the colour of a box if the mouse hovers over it
 boxes.forEach(box => {
     box.addEventListener("mouseover", () => {
-        box.style.backgroundColor = "grey";
+        if (colour == "gray") {
+            box.style.backgroundColor = "gray";
+        } else {
+            let red = pickRandomNumber();
+            let green = pickRandomNumber();
+            let blue = pickRandomNumber();
+            box.style.backgroundColor = `rgb(${red}, ${blue}, ${green})`
+        }
     });
 });
 
@@ -53,7 +60,30 @@ sizeBtn.addEventListener("click", () => {
     const boxes = document.querySelectorAll(".box");
     boxes.forEach(box => {
         box.addEventListener("mouseover", () => {
-            box.style.backgroundColor = "grey";
+            if (colour == "gray") {
+                box.style.backgroundColor = "gray";
+            } else {
+                let red = pickRandomNumber();
+                let green = pickRandomNumber();
+                let blue = pickRandomNumber();
+                box.style.backgroundColor = `rgb(${red}, ${blue}, ${green})`
+            }
         });
     });
 });
+
+let colour = "gray";
+
+const rgb = document.querySelector(".RGB");
+rgb.addEventListener("click", () => {
+    colour = "rainbow";
+});
+
+const greyButton = document.querySelector(".boringBtn");
+greyButton.addEventListener("click", () => {
+    colour = "gray";
+});
+
+function pickRandomNumber() {
+    return Math.floor(Math.random() * 256);
+}
