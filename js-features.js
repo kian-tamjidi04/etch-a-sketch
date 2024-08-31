@@ -30,7 +30,7 @@ createGrid();
 
 const boxes = document.querySelectorAll(".box");
 boxes.forEach(box => {
-    box.addEventListener("mouseover", (event) => {
-        event.target.style.backgroundColor = "grey";
+    box.addEventListener("mouseover", () => {
+        box.style.backgroundColor = "grey";
     });
 });
