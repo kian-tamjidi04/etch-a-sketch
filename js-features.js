@@ -38,5 +38,9 @@ boxes.forEach(box => {
 const sizeBtn = document.querySelector(".sizeBtn");
 sizeBtn.addEventListener("click", () => {
     let size = prompt("Enter new size for grid: ");
+    const container = document.querySelector(".container");
+    while (container.firstChild) {
+        container.removeChild(container.firstChild);
+    }
     createGrid(size);
 });
