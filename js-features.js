@@ -38,9 +38,22 @@ boxes.forEach(box => {
 const sizeBtn = document.querySelector(".sizeBtn");
 sizeBtn.addEventListener("click", () => {
     let size = prompt("Enter new size for grid: ");
+    size = parseInt(size);
+    if (size < 1 || size > 100) {
+        alert("Value must be between 1 and 100");
+        return;
+    }
+
     const container = document.querySelector(".container");
     while (container.firstChild) {
         container.removeChild(container.firstChild);
     }
-    createGrid(size, 16);
+    createGrid(size);
+
+    const boxes = document.querySelectorAll(".box");
+    boxes.forEach(box => {
+        box.addEventListener("mouseover", () => {
+            box.style.backgroundColor = "grey";
+    });
+});
 });
