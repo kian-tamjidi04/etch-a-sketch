@@ -1,28 +1,21 @@
+const GRID_SIZE = 720;
+
 // Creates the grid that will be used
 function createGrid(n) {
     const createBox = () => {
         const box = document.createElement("div");
         box.className = "box";
-        box.style = "padding: 20px; background-color: white; border-color: black; border-width: 5px; border-style: solid";    
+        const boxSize = GRID_SIZE / n;
+        box.style = `width: ${boxSize}px; height: ${boxSize}px; background-color: white; border: 1px solid black; box-sizing: border-box;`;
+
         return box;
     };
 
-    const createLine = () => {
-        const line = document.createElement("div");
-        line.style = "display: flex";
-    
-        // Each line contains n boxes
-        for (let i = 0; i < n; i++) {
-            line.appendChild(createBox());
-        }
-
-        return line;
-    }
-
     const gridContainer = document.querySelector(".container");
-    gridContainer.style = "display: flex; flex-direction: column"
-    for (let i = 0; i < n; i++) {
-        gridContainer.appendChild(createLine());
+    gridContainer.style = `display: grid; grid-template-columns: repeat(${n}, 1fr); width: ${GRID_SIZE}px; height: ${GRID_SIZE}px;`;
+
+    for (let i = 0; i < n * n; i++) {
+        gridContainer.appendChild(createBox());
     }
 }
 
