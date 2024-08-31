@@ -1,12 +1,9 @@
-// TODO: CREATE A FUNCTION THAT CREATES DIVS FOR THE
-// 16X16 GRID
-
-// error: only one single box being rendered, which means each line contains either
-// one box of boxes stacked on top of each other
+// Creates the grid that will be used
 function createGrid() {
     const createBox = () => {
         const box = document.createElement("div");
-        box.style = "width: 20px; height: 20px; background-color: gray; border-color: black; border-width: 5px; border-style: solid";    
+        box.className = "box";
+        box.style = "width: 20px; height: 20px; background-color: white; border-color: black; border-width: 5px; border-style: solid";    
         return box;
     };
 
@@ -30,3 +27,10 @@ function createGrid() {
 }
 
 createGrid();
+
+const boxes = document.querySelectorAll(".box");
+boxes.forEach(box => {
+    box.addEventListener("mouseover", (event) => {
+        event.target.style.backgroundColor = "grey";
+    });
+});
