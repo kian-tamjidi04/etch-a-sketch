@@ -3,7 +3,7 @@ function createGrid(n) {
     const createBox = () => {
         const box = document.createElement("div");
         box.className = "box";
-        box.style = "width: 20px; height: 20px; background-color: white; border-color: black; border-width: 5px; border-style: solid";    
+        box.style = "padding: 20px; background-color: white; border-color: black; border-width: 5px; border-style: solid";    
         return box;
     };
 
@@ -42,5 +42,5 @@ sizeBtn.addEventListener("click", () => {
     while (container.firstChild) {
         container.removeChild(container.firstChild);
     }
-    createGrid(size);
+    createGrid(size, 16);
 });
