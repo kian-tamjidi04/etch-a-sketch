@@ -1,5 +1,5 @@
 // Creates the grid that will be used
-function createGrid() {
+function createGrid(n) {
     const createBox = () => {
         const box = document.createElement("div");
         box.className = "box";
@@ -11,8 +11,8 @@ function createGrid() {
         const line = document.createElement("div");
         line.style = "display: flex";
     
-        // Each line contains 16 boxes
-        for (let i = 0; i < 16; i++) {
+        // Each line contains n boxes
+        for (let i = 0; i < n; i++) {
             line.appendChild(createBox());
         }
 
@@ -21,16 +21,22 @@ function createGrid() {
 
     const gridContainer = document.querySelector(".container");
     gridContainer.style = "display: flex; flex-direction: column"
-    for (let i = 0; i < 16; i++) {
+    for (let i = 0; i < n; i++) {
         gridContainer.appendChild(createLine());
     }
 }
 
-createGrid();
+createGrid(16);
 
 const boxes = document.querySelectorAll(".box");
 boxes.forEach(box => {
     box.addEventListener("mouseover", () => {
         box.style.backgroundColor = "grey";
     });
+});
+
+const sizeBtn = document.querySelector(".sizeBtn");
+sizeBtn.addEventListener("click", () => {
+    let size = prompt("Enter new size for grid: ");
+    createGrid(size);
 });
